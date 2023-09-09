@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Quiz Trivia</string>
+    <!-- My WOrk-->
+    <!--Quiz Fragment-->
+    <string name="string_counter">%d/%d</string>
+    <string name="submit">SUBMIT</string>
+    <string name="next">NEXT</string>
+
+
+    <!-- Result Fragment -->
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="restart">Restart</string>
+    <string name="home">Home</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--  Title  -->
+    <string name="amazing">Amazing</string>
+    <string name="excellent">Excellent</string>
+    <string name="welldone">Welldone</string>
+    <string name="nice">Nice try, keep it up</string>
+    <string name="fail">Failed</string>
+    <string name="search">search</string>
+    <string name="start">START</string>
+</resources>

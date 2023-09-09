@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.dagger.hilt.android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+android {
+    namespace 'com.android.quiztrivia'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.android.quiztrivia"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17 //if it increse this will reuslt in uncompatible with older devices
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    //splash-screen
+    implementation "androidx.core:core-splashscreen:$splash_screen_version"
+
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycle_version"
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version" //retrofit only
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version" //gson converter
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version" //moshi converter
+    implementation "com.squareup.moshi:moshi:$moshi_version" //moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version" //moshi kotlin
+    implementation "com.squareup.okhttp3:okhttp-bom:$ok_http"  //okhttp3 bom
+    implementation "com.squareup.okhttp3:okhttp" //okhhttp
+    implementation "com.squareup.okhttp3:logging-interceptor" //okhttp's logging interceptor
+//    implementation "com.android.volley:volley:$volley_version"
+
+
+//    //database
+//    kapt "androidx.room:room-compiler:$room_version"
+//    implementation "androidx.room:room-ktx:$room_version"
+//    implementation "androidx.room:room-runtime:$room_version"
+
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt  "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //serialization
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1'
+
+    //gif view
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
+
+    //testings
+    testImplementation "com.squareup.okhttp3:mockwebserver:$ok_http"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

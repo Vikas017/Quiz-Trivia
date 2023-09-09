@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.screen.QuizFragment">
+
+    <data>
+        <variable
+            name="quizFragment"
+            type="com.android.quiztrivia.ui.screen.QuizFragment" />
+        <variable
+            name="quizViewModel"
+            type="com.android.quiztrivia.ui.QuizViewModel" />
+    </data>
+
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!--Next and Skip Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next_and_skip_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                app:icon="@drawable/baseline_navigate_next_24"
+                android:onClick="@{()-> quizFragment.onButtonClick()}"
+                style="@style/Widget.QuizTrivia.Button"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp">
+                <!--Category-->
+                <TextView
+                    android:id="@+id/category_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="@{quizViewModel.quiz.category}"
+                    style="@style/Widget.QuizTrivia.TextView"
+                    tools:text="Who are you?"/>
+                <TextView
+                    android:id="@+id/question_counter_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--Questions and Options -->
+            <TextView
+                android:id="@+id/question_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@{quizViewModel.quiz.question}"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="8dp"
+                android:padding="8dp">
+                    <RadioButton
+                        android:id="@+id/option_one_radio_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:text="@{quizViewModel.quiz.incorrectAnswer[0]}"
+                        style="@style/Widget.QuizTrivia.TextView"/>
+
+                    <RadioButton
+                        android:id="@+id/option_two_radio_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:text="@{quizViewModel.quiz.incorrectAnswer[1]}"
+                        style="@style/Widget.QuizTrivia.TextView"/>
+
+                    <RadioButton
+                        android:id="@+id/option_three_radio_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:text="@{quizViewModel.quiz.incorrectAnswer[2]}"
+                        style="@style/Widget.QuizTrivia.TextView"/>
+
+                    <RadioButton
+                        android:id="@+id/option_four_radio_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:text="@{quizViewModel.quiz.incorrectAnswer[3]}"
+                        style="@style/Widget.QuizTrivia.TextView"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+</layout>
